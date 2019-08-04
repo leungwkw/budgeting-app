@@ -10,27 +10,45 @@ import UIKit
 
 class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBAction func createNewPeriod(_ sender: Any) {
-        self.performSegue(withIdentifier: "toNewPeriodViewController", sender: sender)
-    }
+    var periods: [Period] = []
+    var selectedPeriod: Period?
     
+    /**
+     * Informs table view of the number of rows in given section.
+     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.periods.count
     }
     
+    /**
+     * Supplies table view with table cell for given section and row.
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "budgetingPeriodCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseablePeriodCell", for: indexPath)
         cell.textLabel?.text = self.periods[indexPath.row].name
         return cell
     }
     
+    /**
+     * Upon selecting a table cell, segues to PeriodViewController.
+     */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedPeriod = periods[indexPath.row]
-        self.performSegue(withIdentifier: "toPeriodViewController", sender: indexPath)
+        self.performSegue(withIdentifier: "toPeriodView", sender: indexPath)
     }
     
-    var selectedPeriod: Period?
+    /**
+     * When the 'New' button is pressed, segues to NewPeriodViewController.
+     */
+    @IBAction func createNewPeriod(_ sender: Any) {
+        self.performSegue(withIdentifier: "toNewPeriodView", sender: sender)
+    }
     
+    /**
+     * Method runs before segue:
+     * if segue destination is PeriodViewController,
+     * sends the selected period and long-term envelopes to it before the segue.
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination
         if type(of: destinationVC) == PeriodViewController.self {
@@ -40,8 +58,30 @@ class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    var periods: [Period] = []
+    /**
+     * Method runs before loading the view:
+     * Populates 'periods' array from dummy data.
+     */
+    override func loadView() {
+        let firstPeriod = Period(name: "First Period", envelopes: self.firstPeriodEnvelopes)
+        let secondPeriod = Period(name: "Second Period", envelopes: self.secondPeriodEnvelopes)
+        self.periods.append(firstPeriod)
+        self.periods.append(secondPeriod)
+        super.loadView()
+    }
     
+    /**
+     * Method runs after view has been loaded:
+     * Sets nav-bar title of this view.
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Budgeting Periods"
+    }
+    
+    /**
+     * DUMMY DATA: envelopes for first period.
+     */
     let firstPeriodEnvelopes: [Envelope] = [
         Envelope(name: "Groceries/Miscl", amtBudgeted: 100.00),
         Envelope(name: "Recreation", amtBudgeted: 150.00),
@@ -51,6 +91,9 @@ class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITable
         Envelope(name: "Investment", amtBudgeted: 100.00),
     ]
     
+    /**
+     * DUMMY DATA: envelopes for second period.
+     */
     let secondPeriodEnvelopes: [Envelope] = [
         Envelope(name: "Groceries/Miscl2", amtBudgeted: 100.00),
         Envelope(name: "Recreation2", amtBudgeted: 150.00),
@@ -60,6 +103,9 @@ class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITable
         Envelope(name: "Investment2", amtBudgeted: 100.00),
     ]
     
+    /**
+     * DUMMY DATA: long-term envelopes.
+     */
     let longTermEnvelopes: [Envelope] = [
         Envelope(name: "Fall NOLA Trip", amtBudgeted: 100.00),
         Envelope(name: "Sarah's iPad Case", amtBudgeted: 150.00),
@@ -68,34 +114,4 @@ class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITable
         Envelope(name: "New Shoes", amtBudgeted: 400.00),
         Envelope(name: "Baggage Fees", amtBudgeted: 100.00)
     ]
-    
-    override func loadView() {
-        
-        let firstPeriod = Period(name: "First Period", envelopes: self.firstPeriodEnvelopes)
-        let secondPeriod = Period(name: "Second Period", envelopes: self.secondPeriodEnvelopes)
-        self.periods.append(firstPeriod)
-        self.periods.append(secondPeriod)
-        super.loadView()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.title = "Budgeting Periods"
-        
-        
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+class EnvelopeDetailsViewController: UIViewController {
     
     public var envelope: Envelope?
     @IBOutlet weak var envelopeNameLabel: UILabel!
@@ -17,12 +17,21 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var spendingBar: SpendingBar!
     @IBOutlet weak var addSpendingTextField: UITextField!
     
+    /**
+     * Upon typing in the 'addSpendingTextField',
+     * immediately updates the number-string to a currency-string.
+     */
     @IBAction func didEdit(_ sender: UITextField) {
         if let amountString = sender.text?.currencyInputFormatting() {
             sender.text = amountString
         }
     }
     
+    /**
+     * Upon pressing the 'Add Spending' button,
+     * adds amount spent (stated in the 'addSpendingTextField') to the actual envelop model and then
+     * updates the 'spentLabel' and 'spendingBar' of this view accordingly.
+     */
     @IBAction func addSpending(_ sender: Any) {
         if let amtToAddText = self.addSpendingTextField.text {
             if let envelope = self.envelope {
@@ -32,41 +41,30 @@ class DetailsViewController: UIViewController {
                 self.spendingBar.animateValue(to: CGFloat(envelope.amtSpent/envelope.amtBudgeted))
             }
         }
-        
     }
+    
+    /**
+     * Method runs after view has been loaded:
+     * populates labels and other objects of the view based on the envelope
+     * passed in from the Period-View.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = envelope?.name
-        // Do any additional setup after loading the view.
-        
+
         if let envelope = self.envelope {
             self.envelopeNameLabel.text = envelope.name
             self.spentLabel.text = String(envelope.amtSpent)
             self.budgetedLabel.text = String(envelope.amtBudgeted)
             self.spendingBar.value = CGFloat(envelope.amtSpent/envelope.amtBudgeted)
         }
-        
-        
     }
-    
-    
-    
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    
-
 }
 
+/**
+ * Extension for 'String' class that allows for currency-string-formatting.
+ */
 extension String {
     
-    // formatting text for currency textField
     func currencyInputFormatting() -> String {
         
         var number: NSNumber!

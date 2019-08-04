@@ -112,8 +112,8 @@
                     <navigationItem key="navigationItem" id="UDk-ub-kbQ"/>
                     <connections>
                         <outlet property="tableView" destination="KoP-wl-KnH" id="2SA-B8-XxT"/>
-                        <segue destination="9fF-tq-hIN" kind="show" identifier="showDetails" id="oVC-Jj-sjp"/>
-                        <segue destination="c72-Pb-kX9" kind="presentation" id="oyY-KD-7mh"/>
+                        <segue destination="9fF-tq-hIN" kind="show" identifier="toEnvelopeDetailsView" id="oVC-Jj-sjp"/>
+                        <segue destination="c72-Pb-kX9" kind="presentation" identifier="toNewEnvelopeView" id="oyY-KD-7mh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="892"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Envelope Details View Controller-->
         <scene sceneID="JZI-AM-wwX">
             <objects>
-                <viewController id="9fF-tq-hIN" customClass="DetailsViewController" customModule="Budget_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9fF-tq-hIN" customClass="EnvelopeDetailsViewController" customModule="Budget_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="12p-2M-jAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,7 +284,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="budgetingPeriodCell" id="NG2-XV-R42">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseablePeriodCell" id="NG2-XV-R42">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NG2-XV-R42" id="qX0-xH-Hbi">
@@ -313,8 +313,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="4PW-6b-e3e"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="toPeriodViewController" id="aB2-3O-igS"/>
-                        <segue destination="uf0-lo-lMk" kind="presentation" identifier="toNewPeriodViewController" id="VLV-B3-Woy"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toPeriodView" id="aB2-3O-igS"/>
+                        <segue destination="uf0-lo-lMk" kind="presentation" identifier="toNewPeriodView" id="VLV-B3-Woy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASm-HN-ifp" userLabel="First Responder" sceneMemberID="firstResponder"/>
