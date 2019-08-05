@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KoP-wl-KnH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseableEnvelopeCell" rowHeight="93" id="lnC-s9-nbl" customClass="EnvelopeTableViewCell" customModule="Budget_App" customModuleProvider="target">
@@ -55,11 +55,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groceries / Miscl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-Jw-DBO">
-                                                    <rect key="frame" x="35" y="20" width="137" height="22"/>
+                                                    <rect key="frame" x="35" y="20" width="131.5" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="jM1-Tu-vmT"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -89,36 +89,56 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="mre-Wr-vzU"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmh-gR-LNG">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RIw-O2-VxM"/>
-                                    <barButtonItem title="New" id="clI-6L-T0K"/>
-                                </items>
-                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUl-nY-mnY">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNd-WV-VfJ">
+                                        <rect key="frame" x="86" y="10" width="203" height="30"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <state key="normal" title="Unallocated Income: $200.00"/>
+                                        <connections>
+                                            <action selector="manageIncome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ddd-GP-eyK"/>
+                                            <segue destination="DlR-FA-UaW" kind="presentation" identifier="toManageIncomeView" id="dIp-Pg-ulD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.76232059675108088" blue="0.55197153154667578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bNd-WV-VfJ" firstAttribute="centerX" secondItem="IUl-nY-mnY" secondAttribute="centerX" id="EvH-hc-a4f"/>
+                                    <constraint firstAttribute="height" constant="50" id="YJO-ih-P1r"/>
+                                    <constraint firstItem="bNd-WV-VfJ" firstAttribute="centerY" secondItem="IUl-nY-mnY" secondAttribute="centerY" id="bBA-oZ-p48"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Gmh-gR-LNG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="6tr-QE-VeL"/>
-                            <constraint firstItem="Gmh-gR-LNG" firstAttribute="top" secondItem="KoP-wl-KnH" secondAttribute="bottom" id="BMs-OJ-6YJ"/>
+                            <constraint firstItem="IUl-nY-mnY" firstAttribute="top" secondItem="KoP-wl-KnH" secondAttribute="bottom" id="D47-hD-7E4"/>
+                            <constraint firstItem="IUl-nY-mnY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FRr-cd-Q7h"/>
                             <constraint firstItem="KoP-wl-KnH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fcb-QW-bST"/>
-                            <constraint firstItem="Gmh-gR-LNG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QUc-oC-vwz"/>
+                            <constraint firstItem="IUl-nY-mnY" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="R1s-om-god"/>
                             <constraint firstItem="KoP-wl-KnH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dpn-1A-kWG"/>
-                            <constraint firstItem="Gmh-gR-LNG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eQr-y1-Iqj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KoP-wl-KnH" secondAttribute="trailing" id="pP1-HE-UK2"/>
+                            <constraint firstItem="IUl-nY-mnY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="s5f-th-K0G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UDk-ub-kbQ"/>
+                    <navigationItem key="navigationItem" id="UDk-ub-kbQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lDA-fl-VhA">
+                            <connections>
+                                <action selector="createNewEnvelope:" destination="BYZ-38-t0r" id="Yx3-Ks-lpz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="KoP-wl-KnH" id="2SA-B8-XxT"/>
+                        <outlet property="unallocatedIncomeBtn" destination="bNd-WV-VfJ" id="o5a-fk-VO7"/>
                         <segue destination="9fF-tq-hIN" kind="show" identifier="toEnvelopeDetailsView" id="oVC-Jj-sjp"/>
                         <segue destination="c72-Pb-kX9" kind="presentation" identifier="toNewEnvelopeView" id="oyY-KD-7mh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1076" y="134"/>
         </scene>
         <!--New Period View Controller-->
         <scene sceneID="Rgt-ND-LW4">
@@ -128,28 +148,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaT-YU-rch">
-                                <rect key="frame" x="169" y="318" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaT-YU-rch">
+                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createNewPeriod:" destination="uf0-lo-lMk" eventType="touchUpInside" id="un0-38-a6l"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTL-Bd-now">
+                                <rect key="frame" x="94" y="278.5" width="187.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4T6-NK-7eZ">
+                                <rect key="frame" x="163.5" y="348.5" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelCreate:" destination="uf0-lo-lMk" eventType="touchUpInside" id="NwO-aG-bkK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.97031993443555331" blue="0.55166564151052611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4T6-NK-7eZ" firstAttribute="centerX" secondItem="W45-ge-wdD" secondAttribute="centerX" id="1K2-05-Ozv"/>
+                            <constraint firstItem="4T6-NK-7eZ" firstAttribute="top" secondItem="yaT-YU-rch" secondAttribute="bottom" id="KwB-QL-TSH"/>
+                            <constraint firstItem="sTL-Bd-now" firstAttribute="width" secondItem="W45-ge-wdD" secondAttribute="width" multiplier="0.5" id="VgV-u6-R11"/>
+                            <constraint firstItem="yaT-YU-rch" firstAttribute="centerX" secondItem="W45-ge-wdD" secondAttribute="centerX" id="aX0-dF-KMb"/>
+                            <constraint firstItem="yaT-YU-rch" firstAttribute="top" secondItem="sTL-Bd-now" secondAttribute="bottom" constant="10" id="f6v-4J-Vxa"/>
+                            <constraint firstItem="sTL-Bd-now" firstAttribute="centerY" secondItem="W45-ge-wdD" secondAttribute="centerY" constant="-40" id="p0W-Nh-uVq"/>
+                            <constraint firstItem="sTL-Bd-now" firstAttribute="centerX" secondItem="W45-ge-wdD" secondAttribute="centerX" id="yiR-FU-opH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MxY-uB-lFf"/>
                     </view>
+                    <connections>
+                        <outlet property="newPeriodTextField" destination="sTL-Bd-now" id="yuE-c8-BPr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpT-n3-d8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="161" y="892"/>
+            <point key="canvasLocation" x="160.80000000000001" y="891.90404797601207"/>
         </scene>
-        <!--View Controller-->
+        <!--New Envelope View Controller-->
         <scene sceneID="x2g-BN-qUe">
             <objects>
-                <viewController id="c72-Pb-kX9" sceneMemberID="viewController">
+                <viewController id="c72-Pb-kX9" customClass="NewEnvelopeViewController" customModule="Budget_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8pU-oB-7dm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.59701259671185103" blue="0.82886725522208504" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="tbR-Vg-B2A"/>
                     </view>
                 </viewController>
@@ -273,11 +320,6 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ma7-Wu-DiT"/>
-                                    <barButtonItem title="New" id="ujy-Y0-FJx">
-                                        <connections>
-                                            <action selector="createNewPeriod:" destination="hj8-mz-0DE" id="VCe-WM-QII"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BCb-0t-tTN">
@@ -311,8 +353,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C2D-w7-uMh"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4PW-6b-e3e"/>
+                    <navigationItem key="navigationItem" id="4PW-6b-e3e">
+                        <barButtonItem key="backBarButtonItem" title=" " id="tmJ-ra-fc8"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LVm-zY-QZ3">
+                            <connections>
+                                <action selector="createNewPeriod:" destination="hj8-mz-0DE" id="391-I0-igQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="BCb-0t-tTN" id="APC-my-zZW"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toPeriodView" id="aB2-3O-igS"/>
                         <segue destination="uf0-lo-lMk" kind="presentation" identifier="toNewPeriodView" id="VLV-B3-Woy"/>
                     </connections>
@@ -320,6 +370,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASm-HN-ifp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="160.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Manage Income View Controller-->
+        <scene sceneID="x4N-mh-5YR">
+            <objects>
+                <viewController id="DlR-FA-UaW" customClass="ManageIncomeViewController" customModule="Budget_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qn4-G6-vqT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.62168361311868492" green="0.6251702411215041" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="XZU-44-KB8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvT-O3-plH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="-614"/>
         </scene>
     </scenes>
 </document>

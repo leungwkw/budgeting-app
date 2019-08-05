@@ -10,8 +10,9 @@ import UIKit
 
 class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var periods: [Period] = []
     var selectedPeriod: Period?
+    
+    @IBOutlet weak var tableView: UITableView!
     
     /**
      * Informs table view of the number of rows in given section.
@@ -56,18 +57,10 @@ class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITable
             destinationPeriodVC.currentPeriod = selectedPeriod
             destinationPeriodVC.longTermEnvelopes = self.longTermEnvelopes
         }
-    }
-    
-    /**
-     * Method runs before loading the view:
-     * Populates 'periods' array from dummy data.
-     */
-    override func loadView() {
-        let firstPeriod = Period(name: "First Period", envelopes: self.firstPeriodEnvelopes)
-        let secondPeriod = Period(name: "Second Period", envelopes: self.secondPeriodEnvelopes)
-        self.periods.append(firstPeriod)
-        self.periods.append(secondPeriod)
-        super.loadView()
+        else if type(of: destinationVC) == NewPeriodViewController.self {
+            let destinationNewPeriodVC = destinationVC as! NewPeriodViewController
+            destinationNewPeriodVC.callerVC = self
+        }
     }
     
     /**
@@ -80,27 +73,35 @@ class AllPeriodsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     /**
-     * DUMMY DATA: envelopes for first period.
+     * Method runs right before view appears:
+     * reloads the table view
+     * (useful for when returning from New-Period view,
+     * where user may have created a new period).
      */
-    let firstPeriodEnvelopes: [Envelope] = [
-        Envelope(name: "Groceries/Miscl", amtBudgeted: 100.00),
-        Envelope(name: "Recreation", amtBudgeted: 150.00),
-        Envelope(name: "Marriott Stay", amtBudgeted: 490.00),
-        Envelope(name: "Tithe", amtBudgeted: 220.00),
-        Envelope(name: "Savings", amtBudgeted: 400.00),
-        Envelope(name: "Investment", amtBudgeted: 100.00),
-    ]
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     
     /**
-     * DUMMY DATA: envelopes for second period.
+     * DUMMY DATA: all periods, their names and their envelopes.
      */
-    let secondPeriodEnvelopes: [Envelope] = [
-        Envelope(name: "Groceries/Miscl2", amtBudgeted: 100.00),
-        Envelope(name: "Recreation2", amtBudgeted: 150.00),
-        Envelope(name: "Marriott Stay2", amtBudgeted: 490.00),
-        Envelope(name: "Tithe2", amtBudgeted: 220.00),
-        Envelope(name: "Savings2", amtBudgeted: 400.00),
-        Envelope(name: "Investment2", amtBudgeted: 100.00),
+    var periods: [Period] = [
+        Period(name: "First Period", income: 205.0, envelopes: [
+            Envelope(name: "Groceries/Miscl", amtBudgeted: 100.00),
+            Envelope(name: "Recreation", amtBudgeted: 150.00),
+            Envelope(name: "Marriott Stay", amtBudgeted: 490.00),
+            Envelope(name: "Tithe", amtBudgeted: 220.00),
+            Envelope(name: "Savings", amtBudgeted: 400.00),
+            Envelope(name: "Investment", amtBudgeted: 100.00)
+        ]),
+        Period(name: "Second Period", income: 403.0, envelopes: [
+            Envelope(name: "Groceries/Miscl2", amtBudgeted: 100.00),
+            Envelope(name: "Recreation2", amtBudgeted: 150.00),
+            Envelope(name: "Marriott Stay2", amtBudgeted: 490.00),
+            Envelope(name: "Tithe2", amtBudgeted: 220.00),
+            Envelope(name: "Savings2", amtBudgeted: 400.00),
+            Envelope(name: "Investment2", amtBudgeted: 100.00)
+        ])
     ]
     
     /**

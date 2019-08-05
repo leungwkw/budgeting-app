@@ -21,6 +21,8 @@
 		D4EBCD0722F6443C000E46AB /* AllPeriodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0622F6443C000E46AB /* AllPeriodsViewController.swift */; };
 		D4EBCD0922F6468C000E46AB /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0822F6468C000E46AB /* Period.swift */; };
 		D4EBCD0B22F6827E000E46AB /* NewPeriodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0A22F6827E000E46AB /* NewPeriodViewController.swift */; };
+		D4EBCD0D22F79ED3000E46AB /* NewEnvelopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0C22F79ED3000E46AB /* NewEnvelopeViewController.swift */; };
+		D4EBCD0F22F7A930000E46AB /* ManageIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0E22F7A930000E46AB /* ManageIncomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		D4EBCD0622F6443C000E46AB /* AllPeriodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPeriodsViewController.swift; sourceTree = "<group>"; };
 		D4EBCD0822F6468C000E46AB /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		D4EBCD0A22F6827E000E46AB /* NewPeriodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPeriodViewController.swift; sourceTree = "<group>"; };
+		D4EBCD0C22F79ED3000E46AB /* NewEnvelopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEnvelopeViewController.swift; sourceTree = "<group>"; };
+		D4EBCD0E22F7A930000E46AB /* ManageIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageIncomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,14 +78,10 @@
 			children = (
 				D4EBCD0222F5317E000E46AB /* EnvelopeTableViewCell.swift */,
 				D4EBCCFE22F117A0000E46AB /* FillingBar.swift */,
-				D4EBCCF622F0FDE5000E46AB /* Envelope.swift */,
+				D4EBCD1122F7A97E000E46AB /* Models */,
 				D4EBCCE422F0FC9A000E46AB /* AppDelegate.swift */,
-				D4EBCCE622F0FC9A000E46AB /* PeriodViewController.swift */,
+				D4EBCD1022F7A959000E46AB /* View-Controllers */,
 				D4EBCCE822F0FC9A000E46AB /* Main.storyboard */,
-				D4EBCD0A22F6827E000E46AB /* NewPeriodViewController.swift */,
-				D4EBCD0622F6443C000E46AB /* AllPeriodsViewController.swift */,
-				D4EBCD0822F6468C000E46AB /* Period.swift */,
-				D4EBCD0422F5E463000E46AB /* EnvelopeDetailsViewController.swift */,
 				D4EBCCFC22F10FEE000E46AB /* EnvelopeView.swift */,
 				D4EBCCFA22F10DF2000E46AB /* SpendingBar.swift */,
 				D4EBCCEB22F0FC9B000E46AB /* Assets.xcassets */,
@@ -89,6 +89,28 @@
 				D4EBCCF022F0FC9B000E46AB /* Info.plist */,
 			);
 			path = "Budget App";
+			sourceTree = "<group>";
+		};
+		D4EBCD1022F7A959000E46AB /* View-Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4EBCCE622F0FC9A000E46AB /* PeriodViewController.swift */,
+				D4EBCD0E22F7A930000E46AB /* ManageIncomeViewController.swift */,
+				D4EBCD0A22F6827E000E46AB /* NewPeriodViewController.swift */,
+				D4EBCD0C22F79ED3000E46AB /* NewEnvelopeViewController.swift */,
+				D4EBCD0622F6443C000E46AB /* AllPeriodsViewController.swift */,
+				D4EBCD0422F5E463000E46AB /* EnvelopeDetailsViewController.swift */,
+			);
+			path = "View-Controllers";
+			sourceTree = "<group>";
+		};
+		D4EBCD1122F7A97E000E46AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4EBCCF622F0FDE5000E46AB /* Envelope.swift */,
+				D4EBCD0822F6468C000E46AB /* Period.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +186,11 @@
 			files = (
 				D4EBCCFD22F10FEE000E46AB /* EnvelopeView.swift in Sources */,
 				D4EBCCE722F0FC9A000E46AB /* PeriodViewController.swift in Sources */,
+				D4EBCD0F22F7A930000E46AB /* ManageIncomeViewController.swift in Sources */,
 				D4EBCCF722F0FDE5000E46AB /* Envelope.swift in Sources */,
 				D4EBCD0B22F6827E000E46AB /* NewPeriodViewController.swift in Sources */,
 				D4EBCD0522F5E463000E46AB /* EnvelopeDetailsViewController.swift in Sources */,
+				D4EBCD0D22F79ED3000E46AB /* NewEnvelopeViewController.swift in Sources */,
 				D4EBCCE522F0FC9A000E46AB /* AppDelegate.swift in Sources */,
 				D4EBCCFB22F10DF2000E46AB /* SpendingBar.swift in Sources */,
 				D4EBCD0922F6468C000E46AB /* Period.swift in Sources */,

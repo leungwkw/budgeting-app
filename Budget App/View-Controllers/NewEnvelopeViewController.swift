@@ -1,15 +1,17 @@
 //
-//  NewPeriodViewController.swift
+//  NewEnvelopeViewController.swift
 //  Budget App
 //
-//  Created by William Leung on 8/3/19.
+//  Created by William Leung on 8/4/19.
 //  Copyright © 2019 William Leung. All rights reserved.
 //
 
 import UIKit
 
-class NewPeriodViewController: UIViewController {
+class NewEnvelopeViewController: UIViewController {
 
+    var callerVC: PeriodViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -17,6 +17,7 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
     let sectionHeaders = ["For This Period", "Long Term"]
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var unallocatedIncomeBtn: UIButton!
     
     /**
      * Informs table view of the number of sections in table.
@@ -98,14 +99,31 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     /**
+     * When the 'New' button is pressed, segues to NewEnvelopeViewController.
+     */
+    @IBAction func createNewEnvelope(_ sender: Any) {
+        self.performSegue(withIdentifier: "toNewEnvelopeView", sender: sender)
+    }
+    
+    @IBAction func manageIncome(_ sender: Any) {
+    }
+    
+    /**
      * Method runs before segue:
      * if segue destination is EnvelopeDetailsViewController,
      * sends the selected envelope to it before the segue.
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC: EnvelopeDetailsViewController = segue.destination as! EnvelopeDetailsViewController
-        destinationVC.envelope = selectedEnvelope
         
+        let destinationVC = segue.destination
+        if type(of: destinationVC) == EnvelopeDetailsViewController.self {
+            let destinationEnvelopeDetailsVC = destinationVC as! EnvelopeDetailsViewController
+            destinationEnvelopeDetailsVC.envelope = selectedEnvelope
+        }
+        else if type(of: destinationVC) == NewEnvelopeViewController.self {
+            let destinationNewEnvelopeVC = destinationVC as! NewEnvelopeViewController
+            destinationNewEnvelopeVC.callerVC = self
+        }
     }
     
     /**
@@ -114,7 +132,11 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = self.currentPeriod?.name
+        if let currentPeriod = self.currentPeriod {
+            self.title = currentPeriod.name
+            self.unallocatedIncomeBtn.setTitle("Unallocated Income: " + String(currentPeriod.income), for: .normal)
+        }
+        
         tableView.rowHeight = 90
         tableView.backgroundColor = UIColor.green
     }
