@@ -15,22 +15,10 @@ class Envelope {
     var amtFilled: Double
     var amtSpent: Double
     
-    init(name: String, amtBudgeted: Double) {
+    init(name: String, amtBudgeted: Double, amtFilled: Double, amtSpent: Double) {
         self.name = name
         self.amtBudgeted = amtBudgeted
-        self.amtFilled = 0
-        self.amtSpent = 0
-    }
-    
-    func fill(amt: Double) {
-        self.amtFilled += amt
-    }
-    
-    func fillCompletely() {
-        self.amtFilled = self.amtBudgeted
-    }
-    
-    func spend(amt: Double) {
-        self.amtSpent += amt
+        self.amtFilled = amtFilled
+        self.amtSpent = amtSpent
     }
 }
