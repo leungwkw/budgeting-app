@@ -1,5 +1,5 @@
 //
-//  DetailsViewController.swift
+//  EnvelopeDetailsViewController.swift
 //  Budget App
 //
 //  Created by William Leung on 8/3/19.
@@ -10,11 +10,11 @@ import UIKit
 
 class EnvelopeDetailsViewController: UIViewController {
     
-    public var envelope: Envelope?
+    public var envelope: Envelope!
     @IBOutlet weak var envelopeNameLabel: UILabel!
     @IBOutlet weak var spentLabel: UILabel!
     @IBOutlet weak var budgetedLabel: UILabel!
-    @IBOutlet weak var spendingBar: SpendingBar!
+    @IBOutlet weak var filledSpentBar: FilledSpentBar!
     @IBOutlet weak var addSpendingTextField: UITextField!
     
     /**
@@ -28,66 +28,33 @@ class EnvelopeDetailsViewController: UIViewController {
     }
     
     /**
-     * Upon pressing the 'Add Spending' button,
-     * adds amount spent (stated in the 'addSpendingTextField') to the actual envelop model and then
+     * Upon pressing the 'Add Spending' button, checks that 'addSpendingTextField' contains text;
+     * if so, adds amount spent (stated in the 'addIncomeTextField') to the actual envelop model and then
      * updates the 'spentLabel' and 'spendingBar' of this view accordingly.
      */
     @IBAction func addSpending(_ sender: Any) {
-        if let amtToAddText = self.addSpendingTextField.text {
-            if let envelope = self.envelope {
-                let range = amtToAddText.index(after: amtToAddText.startIndex)..<amtToAddText.endIndex
-                envelope.amtSpent += Double(amtToAddText[range]) ?? 0
-                self.spentLabel.text = String(envelope.amtSpent)
-                self.spendingBar.animateValue(to: CGFloat(envelope.amtSpent/envelope.amtBudgeted))
-            }
+        
+        if (self.addSpendingTextField.text!.count > 0) {
+            let amtToAddText = self.addSpendingTextField.text!
+            let range = amtToAddText.index(after: amtToAddText.startIndex)..<amtToAddText.endIndex
+            self.envelope.amtSpent += Double(amtToAddText[range]) ?? 0
+            self.spentLabel.text = String(self.envelope.amtSpent)
+            self.filledSpentBar.animateSpentValue(to: CGFloat(self.envelope.amtSpent/self.envelope.amtBudgeted))
         }
     }
     
     /**
      * Method runs after view has been loaded:
      * populates labels and other objects of the view based on the envelope
-     * passed in from the Period-View.
+     * passed in from the PeriodView.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let envelope = self.envelope {
-            self.envelopeNameLabel.text = envelope.name
-            self.spentLabel.text = String(envelope.amtSpent)
-            self.budgetedLabel.text = String(envelope.amtBudgeted)
-            self.spendingBar.value = CGFloat(envelope.amtSpent/envelope.amtBudgeted)
-        }
-    }
-}
-
-/**
- * Extension for 'String' class that allows for currency-string-formatting.
- */
-extension String {
-    
-    func currencyInputFormatting() -> String {
-        
-        var number: NSNumber!
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = "$"
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        
-        var amountWithPrefix = self
-        
-        // remove from String: "$", ".", ","
-        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-        
-        let double = (amountWithPrefix as NSString).doubleValue
-        number = NSNumber(value: (double / 100))
-        
-        // if first number is 0 or all numbers were deleted
-        guard number != 0 as NSNumber else {
-            return ""
-        }
-        
-        return formatter.string(from: number)!
+        self.envelopeNameLabel.text = self.envelope.name
+        self.spentLabel.text = String(self.envelope.amtSpent)
+        self.budgetedLabel.text = String(self.envelope.amtBudgeted)
+        self.filledSpentBar.filledValue = CGFloat(self.envelope.amtFilled/self.envelope.amtBudgeted)
+        self.filledSpentBar.spentValue = CGFloat(self.envelope.amtSpent/self.envelope.amtBudgeted)
     }
 }

@@ -10,23 +10,26 @@ import UIKit
 
 class NewPeriodViewController: UIViewController {
     
-    var callerVC: AllPeriodsViewController?
+    var callerVC: AllPeriodsViewController!
 
     @IBOutlet weak var newPeriodTextField: UITextField!
     
+    /**
+     * When the 'Create' button is pressed, checks that 'newPeriodTextField' contains text;
+     * if so, appends a new, empty period to list of periods and then segues back to AllPeriodsView.
+     */
     @IBAction func createNewPeriod(_ sender: Any) {
-        if let newPeriodName = newPeriodTextField.text {
-            self.callerVC?.periods.append(Period(name: newPeriodName, income: 0, envelopes: []))
+        if newPeriodTextField.text!.count > 0 {
+            self.callerVC.periods.append(Period(name: newPeriodTextField.text!, income: 0, envelopes: []))
             self.dismiss(animated: true, completion: nil)
         }
     }
     
-    @IBAction func cancelCreate(_ sender: Any) {
+    /**
+     * When the 'Cancel' button is pressed, segues back to AllPeriodsView.
+     */
+    @IBAction func cancelCreatePeriod(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
 }

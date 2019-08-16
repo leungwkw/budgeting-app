@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PeriodViewController.swift
 //  Budget App
 //
 //  Created by William Leung on 7/30/19.
@@ -10,8 +10,8 @@ import UIKit
 
 class PeriodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    var currentPeriod: Period?
-    var longTermEnvelopes: [Envelope]?
+    var currentPeriod: Period!
+    var longTermEnvelopes: [Envelope]!
     var selectedEnvelope: Envelope?
     
     let sectionHeaders = ["For This Period", "Long Term"]
@@ -21,10 +21,10 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
     
     /**
      * Informs table view of the number of sections in table.
-     * Will always be 2 sections: current period
+     * Will always be 2 sections: the current period's envelopes and the long-term envelopes
      */
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return sectionHeaders.count
     }
     
     /**
@@ -47,10 +47,10 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section==0 {
-            return currentPeriod?.envelopes.count ?? 0
+            return self.currentPeriod.envelopes.count
         }
         else {
-            return longTermEnvelopes?.count ?? 0
+            return self.longTermEnvelopes.count
         }
     }
     
@@ -66,52 +66,59 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
          */
         let currentEnvelope: Envelope
         if indexPath.section == 0 {
-            currentEnvelope = self.currentPeriod!.envelopes[indexPath.row]
+            currentEnvelope = self.currentPeriod.envelopes[indexPath.row]
         }
         else {
-            currentEnvelope = self.longTermEnvelopes![indexPath.row]
+            currentEnvelope = self.longTermEnvelopes[indexPath.row]
         }
         
         /*
          * Sets properties of table cell according to 'currentEnvelope' properties.
          */
         cell.envelopNameLabel.text = currentEnvelope.name
-        cell.spentLabel.text = "$" + String(currentEnvelope.amtSpent)
-        cell.budgetedLabel.text = "$" + String(currentEnvelope.amtBudgeted)
-        cell.spendingBar.value = CGFloat(currentEnvelope.amtSpent/currentEnvelope.amtBudgeted)
+        cell.spentLabel.text = String(currentEnvelope.amtSpent)
+        cell.budgetedLabel.text = String(currentEnvelope.amtBudgeted)
+        cell.filledSpentBar.filledValue = CGFloat(currentEnvelope.amtFilled/currentEnvelope.amtBudgeted)
+        cell.filledSpentBar.spentValue = CGFloat(currentEnvelope.amtSpent/currentEnvelope.amtBudgeted)
         
         return cell
     }
     
     /**
-     * Upon selecting a table cell, segues to EnvelopeDetailsViewController.
+     * Upon selecting a table cell, segues to EnvelopeDetailsView.
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            selectedEnvelope = self.currentPeriod!.envelopes[indexPath.row]
+            self.selectedEnvelope = self.currentPeriod.envelopes[indexPath.row]
         }
         else {
-            selectedEnvelope = self.longTermEnvelopes![indexPath.row]
+            self.selectedEnvelope = self.longTermEnvelopes[indexPath.row]
         }
         
         self.performSegue(withIdentifier: "toEnvelopeDetailsView", sender: indexPath)
     }
     
     /**
-     * When the 'New' button is pressed, segues to NewEnvelopeViewController.
+     * When the '+' button is pressed, segues to NewEnvelopeView.
      */
     @IBAction func createNewEnvelope(_ sender: Any) {
         self.performSegue(withIdentifier: "toNewEnvelopeView", sender: sender)
     }
     
+    /**
+     * When the 'unallocatedIncomeBtn' is pressed, segues to ManageIncomeView.
+     */
     @IBAction func manageIncome(_ sender: Any) {
+        self.performSegue(withIdentifier: "toManageIncomeView", sender: sender)
     }
     
     /**
      * Method runs before segue:
-     * if segue destination is EnvelopeDetailsViewController,
-     * sends the selected envelope to it before the segue.
+     * if segue destination view controller is EnvelopeDetailsViewController,
+     * sends the selected envelope to it before the segue;
+     * if segue destination view controller is NewEnvelopeViewController or ManageIncomeViewController,
+     * sends reference to self (Period View Controller).
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -124,18 +131,21 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
             let destinationNewEnvelopeVC = destinationVC as! NewEnvelopeViewController
             destinationNewEnvelopeVC.callerVC = self
         }
+        else if type(of: destinationVC) == ManageIncomeViewController.self {
+            let destinationManageIncomeVC = destinationVC as! ManageIncomeViewController
+            destinationManageIncomeVC.callerVC = self
+        }
     }
     
     /**
      * Method runs after view has been loaded:
-     * sets nav-bar title of this view and some table view properties.
+     * sets nav-bar title of this view, text of 'unallocatedIncomeBtn'
+     * and some table view properties.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let currentPeriod = self.currentPeriod {
-            self.title = currentPeriod.name
-            self.unallocatedIncomeBtn.setTitle("Unallocated Income: " + String(currentPeriod.income), for: .normal)
-        }
+        self.title = self.currentPeriod.name
+        self.unallocatedIncomeBtn.setTitle("Unallocated Income: " + String(self.currentPeriod.income), for: .normal)
         
         tableView.rowHeight = 90
         tableView.backgroundColor = UIColor.green
@@ -143,12 +153,13 @@ class PeriodViewController: UIViewController, UITableViewDataSource, UITableView
     
     /**
      * Method runs right before view appears:
-     * reloads the table view
-     * (useful for when returning from Envelope-Details view,
-     * where user may have changed some envelope properties).
+     * reloads the table view and text of unallocatedIncomeBtn
+     * (useful for when returning from other views,
+     * where user may have changed some properties of the current period).
      */
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
+        self.unallocatedIncomeBtn.setTitle("Unallocated Income: " + String(self.currentPeriod.income), for: .normal)
     }
 }
 

@@ -13,9 +13,7 @@
 		D4EBCCEC22F0FC9B000E46AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4EBCCEB22F0FC9B000E46AB /* Assets.xcassets */; };
 		D4EBCCEF22F0FC9B000E46AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4EBCCED22F0FC9B000E46AB /* LaunchScreen.storyboard */; };
 		D4EBCCF722F0FDE5000E46AB /* Envelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCCF622F0FDE5000E46AB /* Envelope.swift */; };
-		D4EBCCFB22F10DF2000E46AB /* SpendingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCCFA22F10DF2000E46AB /* SpendingBar.swift */; };
-		D4EBCCFD22F10FEE000E46AB /* EnvelopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCCFC22F10FEE000E46AB /* EnvelopeView.swift */; };
-		D4EBCCFF22F117A0000E46AB /* FillingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCCFE22F117A0000E46AB /* FillingBar.swift */; };
+		D4EBCCFB22F10DF2000E46AB /* FilledSpentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCCFA22F10DF2000E46AB /* FilledSpentBar.swift */; };
 		D4EBCD0322F5317E000E46AB /* EnvelopeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0222F5317E000E46AB /* EnvelopeTableViewCell.swift */; };
 		D4EBCD0522F5E463000E46AB /* EnvelopeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0422F5E463000E46AB /* EnvelopeDetailsViewController.swift */; };
 		D4EBCD0722F6443C000E46AB /* AllPeriodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0622F6443C000E46AB /* AllPeriodsViewController.swift */; };
@@ -23,6 +21,9 @@
 		D4EBCD0B22F6827E000E46AB /* NewPeriodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0A22F6827E000E46AB /* NewPeriodViewController.swift */; };
 		D4EBCD0D22F79ED3000E46AB /* NewEnvelopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0C22F79ED3000E46AB /* NewEnvelopeViewController.swift */; };
 		D4EBCD0F22F7A930000E46AB /* ManageIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD0E22F7A930000E46AB /* ManageIncomeViewController.swift */; };
+		D4EBCD1522F92414000E46AB /* String+CurrencyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD1422F92414000E46AB /* String+CurrencyFormatting.swift */; };
+		D4EBCD1723009D97000E46AB /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD1623009D97000E46AB /* AddIncomeViewController.swift */; };
+		D4EBCD192300AB26000E46AB /* CustomAmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EBCD182300AB26000E46AB /* CustomAmtViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +35,7 @@
 		D4EBCCEE22F0FC9B000E46AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4EBCCF022F0FC9B000E46AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4EBCCF622F0FDE5000E46AB /* Envelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Envelope.swift; sourceTree = "<group>"; };
-		D4EBCCFA22F10DF2000E46AB /* SpendingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingBar.swift; sourceTree = "<group>"; };
-		D4EBCCFC22F10FEE000E46AB /* EnvelopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeView.swift; sourceTree = "<group>"; };
-		D4EBCCFE22F117A0000E46AB /* FillingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillingBar.swift; sourceTree = "<group>"; };
+		D4EBCCFA22F10DF2000E46AB /* FilledSpentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledSpentBar.swift; sourceTree = "<group>"; };
 		D4EBCD0222F5317E000E46AB /* EnvelopeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeTableViewCell.swift; sourceTree = "<group>"; };
 		D4EBCD0422F5E463000E46AB /* EnvelopeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeDetailsViewController.swift; sourceTree = "<group>"; };
 		D4EBCD0622F6443C000E46AB /* AllPeriodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPeriodsViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +43,9 @@
 		D4EBCD0A22F6827E000E46AB /* NewPeriodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPeriodViewController.swift; sourceTree = "<group>"; };
 		D4EBCD0C22F79ED3000E46AB /* NewEnvelopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEnvelopeViewController.swift; sourceTree = "<group>"; };
 		D4EBCD0E22F7A930000E46AB /* ManageIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageIncomeViewController.swift; sourceTree = "<group>"; };
+		D4EBCD1422F92414000E46AB /* String+CurrencyFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CurrencyFormatting.swift"; sourceTree = "<group>"; };
+		D4EBCD1623009D97000E46AB /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
+		D4EBCD182300AB26000E46AB /* CustomAmtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAmtViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,14 +78,13 @@
 		D4EBCCE322F0FC9A000E46AB /* Budget App */ = {
 			isa = PBXGroup;
 			children = (
+				D4EBCD1422F92414000E46AB /* String+CurrencyFormatting.swift */,
 				D4EBCD0222F5317E000E46AB /* EnvelopeTableViewCell.swift */,
-				D4EBCCFE22F117A0000E46AB /* FillingBar.swift */,
 				D4EBCD1122F7A97E000E46AB /* Models */,
 				D4EBCCE422F0FC9A000E46AB /* AppDelegate.swift */,
 				D4EBCD1022F7A959000E46AB /* View-Controllers */,
 				D4EBCCE822F0FC9A000E46AB /* Main.storyboard */,
-				D4EBCCFC22F10FEE000E46AB /* EnvelopeView.swift */,
-				D4EBCCFA22F10DF2000E46AB /* SpendingBar.swift */,
+				D4EBCCFA22F10DF2000E46AB /* FilledSpentBar.swift */,
 				D4EBCCEB22F0FC9B000E46AB /* Assets.xcassets */,
 				D4EBCCED22F0FC9B000E46AB /* LaunchScreen.storyboard */,
 				D4EBCCF022F0FC9B000E46AB /* Info.plist */,
@@ -94,8 +95,10 @@
 		D4EBCD1022F7A959000E46AB /* View-Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4EBCD182300AB26000E46AB /* CustomAmtViewController.swift */,
 				D4EBCCE622F0FC9A000E46AB /* PeriodViewController.swift */,
 				D4EBCD0E22F7A930000E46AB /* ManageIncomeViewController.swift */,
+				D4EBCD1623009D97000E46AB /* AddIncomeViewController.swift */,
 				D4EBCD0A22F6827E000E46AB /* NewPeriodViewController.swift */,
 				D4EBCD0C22F79ED3000E46AB /* NewEnvelopeViewController.swift */,
 				D4EBCD0622F6443C000E46AB /* AllPeriodsViewController.swift */,
@@ -184,18 +187,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4EBCCFD22F10FEE000E46AB /* EnvelopeView.swift in Sources */,
 				D4EBCCE722F0FC9A000E46AB /* PeriodViewController.swift in Sources */,
+				D4EBCD1723009D97000E46AB /* AddIncomeViewController.swift in Sources */,
 				D4EBCD0F22F7A930000E46AB /* ManageIncomeViewController.swift in Sources */,
 				D4EBCCF722F0FDE5000E46AB /* Envelope.swift in Sources */,
 				D4EBCD0B22F6827E000E46AB /* NewPeriodViewController.swift in Sources */,
 				D4EBCD0522F5E463000E46AB /* EnvelopeDetailsViewController.swift in Sources */,
 				D4EBCD0D22F79ED3000E46AB /* NewEnvelopeViewController.swift in Sources */,
 				D4EBCCE522F0FC9A000E46AB /* AppDelegate.swift in Sources */,
-				D4EBCCFB22F10DF2000E46AB /* SpendingBar.swift in Sources */,
+				D4EBCD192300AB26000E46AB /* CustomAmtViewController.swift in Sources */,
+				D4EBCCFB22F10DF2000E46AB /* FilledSpentBar.swift in Sources */,
 				D4EBCD0922F6468C000E46AB /* Period.swift in Sources */,
 				D4EBCD0322F5317E000E46AB /* EnvelopeTableViewCell.swift in Sources */,
-				D4EBCCFF22F117A0000E46AB /* FillingBar.swift in Sources */,
+				D4EBCD1522F92414000E46AB /* String+CurrencyFormatting.swift in Sources */,
 				D4EBCD0722F6443C000E46AB /* AllPeriodsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
